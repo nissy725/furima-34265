@@ -47,7 +47,7 @@
 ## addressesテーブル
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
-| postal_code_id      | integer    | null: false |
+| postal_code         | integer    | null: false |
 | prefecture_id       | integer    | null: false |
 | municipality        | string     | null: false |
 | house_number        | string     | null: false |
