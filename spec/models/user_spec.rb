@@ -5,34 +5,34 @@ RSpec.describe User, type: :model do
   end
   describe "ユーザー新規登録" do
     context "新規登録が上手く行く時" do
-      it "nicknameとemail、passwordとpassword_confiramation,family_name,first_name,family_name_kana,first_name_kana,birthdayが存在すれば登録できる" do
+      it 'nicknameとemail、passwordとpassword_confiramation,family_name,first_name,family_name_kana,first_name_kana,birthdayが存在すれば登録できる' do
         expect(@user).to be_valid
       end
-      it "passwordとpassword_confirmationが6文字以上の半角英数字混合であれば登録できる" do
+      it 'passwordとpassword_confirmationが6文字以上の半角英数字混合であれば登録できる' do
         @user.password = 'abc123'
         @user.password_confirmation = 'abc123'
         expect(@user).to be_valid
       end
-      it "last_name_kanjiが全角文字であれば登録できる" do
+      it 'last_name_kanjiが全角文字であれば登録できる' do
         @user.last_name_kanji = "鈴木くん"
         expect(@user).to be_valid
       end
-      it "first_name_kanjiが全角文字であれば登録できる" do
+      it 'first_name_kanjiが全角文字であれば登録できる' do
         @user.first_name_kanji = "一朗くん"
         expect(@user).to be_valid
       end
-      it "last_name_kanaが全角カナであれば登録できる" do
+      it 'last_name_kanaが全角カナであれば登録できる' do
         @user.last_name_kana = "スズキ"
         expect(@user).to be_valid
       end
-      it "first_name_kanaが全角カナであれば登録できる" do
+      it 'first_name_kanaが全角カナであれば登録できる' do
         @user.first_name_kana = "イチロウ"
         expect(@user).to be_valid
       end
     end
 
-    context "新規登録が上手く行かない時" do
-      it "nicknameが空だと登録できない" do
+    context '新規登録が上手く行かない時' do
+      it 'nicknameが空だと登録できない' do
         @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
