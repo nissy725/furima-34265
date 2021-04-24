@@ -68,3 +68,6 @@ group :development, :test do
   gem 'pry-byebug' 
   gem 'pry-stack_explorer' 
 end
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
