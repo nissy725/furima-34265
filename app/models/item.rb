@@ -12,6 +12,8 @@ class Item < ApplicationRecord
     validates :image
     validates :product_name
     validates :product_description
+    validates :price
+    
   end
 
   with_options numericality: { other_than: 1} do
@@ -21,5 +23,4 @@ class Item < ApplicationRecord
     validates :shipping_area_id
     validates :days_to_ship_id
   end
-  
 end
