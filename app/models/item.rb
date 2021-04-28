@@ -12,9 +12,13 @@ class Item < ApplicationRecord
     validates :image
     validates :product_name
     validates :product_description
-    validates :price
-    
   end
+
+  VALID_PRICEL_HALF = /\A[0-9]+\z/
+  validates  :price,  presence: true, format: {with: VALID_PRICEL_HALF},length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
+    greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999
+    } 
+ 
 
   with_options numericality: { other_than: 1} do
     validates :category_id
