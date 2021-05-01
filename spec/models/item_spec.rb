@@ -67,7 +67,17 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
-      it 'priceが半角英数字以外では保存できない' do
+      it 'priceが半角英数字混合では保存できない' do
+        @item.price = "300yen"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが半角英字のみでは保存できない' do
+        @item.price = "fiveyen"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is too short (minimum is 3 characters)", "Price is not a number")
+      end
+      it 'priceが全角文字では保存できない' do
         @item.price = "１００"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is too short (minimum is 3 characters)", "Price is not a number")
