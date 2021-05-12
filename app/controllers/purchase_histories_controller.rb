@@ -1,14 +1,17 @@
 class PurchaseHistoriesController < ApplicationController
+  before_action :authenticate_user!, except: :index
 
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
-  end
-
-  def new
     @purchase_history_address = PurchaseHistoryAddress.new
   end
 
+  def new
+    
+  end
+
   def create
+    binding.pry
     @purchase_history_address = PurchaseHistoryAddress.new(purchase_history_params)
     if @purchase_history_address.valid?
       @purchase_history_address.save
