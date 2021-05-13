@@ -1,5 +1,5 @@
 class PurchaseHistoriesController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
