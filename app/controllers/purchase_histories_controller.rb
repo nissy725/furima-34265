@@ -4,6 +4,7 @@ class PurchaseHistoriesController < ApplicationController
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase_history_address = PurchaseHistoryAddress.new
+    @item = Item.find(params[:item_id])
   end
 
   def new
