@@ -8,6 +8,7 @@ class PurchaseHistoriesController < ApplicationController
   end
 
   def create
+    binding.pry
     @purchase_history_address = PurchaseHistoryAddress.new(purchase_history_params)
     if @purchase_history_address.valid?
       @purchase_history_address.save
