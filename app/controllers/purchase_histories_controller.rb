@@ -2,7 +2,7 @@ class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   before_action :move_to_root_path, only:[:index, :create]
-  before_action :sold_out_item, only: [:index]
+  before_action :sold_out_item, only: [:index, :create]
 
   def index
     @purchase_history_address = PurchaseHistoryAddress.new
