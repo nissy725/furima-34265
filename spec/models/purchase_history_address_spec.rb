@@ -4,6 +4,7 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @purchase_history_address = FactoryBot.build(:purchase_history_address, user_id: user.id, item_id: item.id)
+    sleep 0.015
   end
   describe '商品購入' do
     context '内容に問題がないとき' do
@@ -19,6 +20,12 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
     end
 
     context '購入できないとき' do
+      it 'tokenが空では保存できない' do
+        @purchase_history_address.token = ""
+        @purchase_history_address.valid?
+        expect(@purchase_history_address.errors.full_messages).to include("Token can't be blank")
+      end
+      
       it '郵便番号が空では保存できない' do
         @purchase_history_address.postal_code = ""
         @purchase_history_address.valid?

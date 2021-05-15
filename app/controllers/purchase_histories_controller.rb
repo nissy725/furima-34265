@@ -2,6 +2,7 @@ class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   before_action :move_to_root_path, only:[:index, :create]
+  before_action :sold_out_item, only: [:index]
 
   def index
     @purchase_history_address = PurchaseHistoryAddress.new
@@ -43,4 +44,9 @@ class PurchaseHistoriesController < ApplicationController
     end
   end
 
+  def sold_out_item
+    if @item.purchase_history.present?
+      redirect_to root_path
+    end
+  end
 end
