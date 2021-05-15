@@ -91,6 +91,12 @@ RSpec.describe PurchaseHistoryAddress, type: :model do
         @purchase_history_address.valid?
         expect(@purchase_history_address.errors.full_messages).to include("Phone number is invalid")
       end
+
+      it 'phone_numberが12桁以上の数字では保存できない' do
+        @purchase_history_address.phone_number = "090123456789"
+        @purchase_history_address.valid?
+        expect(@purchase_history_address.errors.full_messages).to include("Phone number is invalid")
+      end
     end
 
   end
